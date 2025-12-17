@@ -1,5 +1,6 @@
 version: "3.7"
 
+# postgresql://username:password@hoppscotch-postgres:5432/mydatabase
 services:
 
   app_proxy:
@@ -8,7 +9,12 @@ services:
       APP_HOST: sparkles-hello-world_server_1
       APP_PORT: 3000
     
-  server:
-    image: getumbrel/community-app-store-hello-world:latest
-    user: "1000:1000"
-    init: true
+  hoppscotch-postgres:
+    image: postgres:latest-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase 
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
