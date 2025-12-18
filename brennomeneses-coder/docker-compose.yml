@@ -19,6 +19,7 @@ services:
   app:
     image: ghcr.io/coder/coder:v2.28.6
     restart: on-failure
+    user: "0:0"  # Rodar como root para evitar problemas de permissão
     group_add:
       - "987" # docker group on host
     ports:
