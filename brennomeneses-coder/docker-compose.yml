@@ -29,10 +29,13 @@ services:
       CODER_HTTP_ADDRESS: "0.0.0.0:7080"
       CODER_ACCESS_URL: "${APP_CODER_ACCESS_URL}"
       CODER_CACHE_DIRECTORY: "/data/cache"  # Usar diretório com permissões corretas
+      TF_PLUGIN_CACHE_DIR: "/data/terraform-plugins"
+      HOME: "/data/home"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ${APP_DATA_DIR}/data/coder_home:/home/coder
-      - ${APP_DATA_DIR}/data/cache:/data/cache  # Volume para o cache
+      - ${APP_DATA_DIR}/data/coder_home:/data/home
+      - ${APP_DATA_DIR}/data/cache:/data/cache
+      - ${APP_DATA_DIR}/data/terraform-plugins:/data/terraform-plugins
     depends_on:
       database:
         condition: service_healthy
