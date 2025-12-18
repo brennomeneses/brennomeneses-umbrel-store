@@ -17,17 +17,20 @@ services:
       retries: 5
 
   app:
-    image: ghcr.io/coder/coder:latest
+    image: ghcr.io/coder/coder:v2.28.6
     restart: on-failure
+    user: "0:0"  # Rodar como root para evitar problemas de permissão
     ports:
       - "${APP_CODER_PORT}:7080"
     environment:
       CODER_PG_CONNECTION_URL: "postgresql://coder_user:coder_password_secure_123@database/coder?sslmode=disable"
       CODER_HTTP_ADDRESS: "0.0.0.0:7080"
       CODER_ACCESS_URL: "${APP_CODER_ACCESS_URL}"
+      CODER_CACHE_DIRECTORY: "/data/cache"  # Usar diretório com permissões corretas
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${APP_DATA_DIR}/data/coder_home:/home/coder
+      - ${APP_DATA_DIR}/data/cache:/data/cache  # Volume para o cache
     depends_on:
       database:
         condition: service_healthy
