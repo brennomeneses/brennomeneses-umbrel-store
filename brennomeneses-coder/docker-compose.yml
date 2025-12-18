@@ -4,10 +4,10 @@ services:
     # other automations.
     image: ${CODER_REPO:-ghcr.io/coder/coder}:${CODER_VERSION:-latest}
     ports:
-      - "7080:7080"
+      - "70080:70080"
     environment:
       CODER_PG_CONNECTION_URL: "postgresql://${POSTGRES_USER:-username}:${POSTGRES_PASSWORD:-password}@database/${POSTGRES_DB:-coder}?sslmode=disable"
-      CODER_HTTP_ADDRESS: "0.0.0.0:7080"
+      CODER_HTTP_ADDRESS: "0.0.0.0:70080"
       # You'll need to set CODER_ACCESS_URL to an IP or domain
       # that workspaces can reach. This cannot be localhost
       # or 127.0.0.1 for non-Docker templates!
