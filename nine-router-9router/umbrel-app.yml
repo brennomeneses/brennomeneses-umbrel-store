@@ -1,0 +1,30 @@
+manifestVersion: 1
+id: nine-router-9router
+name: 9Router
+tagline: Unified AI API router and aggregator
+icon: https://raw.githubusercontent.com/decolua/9router/master/app/public/favicon.svg
+category: AI
+version: "1.0.0"
+port: 20128
+description: >-
+  9Router is a unified API router/aggregator for AI providers. It exposes a
+  single OpenAI-compatible endpoint that fans out to multiple upstream
+  providers, with key rotation, fallbacks, load balancing, and a web dashboard
+  for managing endpoints, models, and usage.
+
+  Data (SQLite database, certs, logs, runtime configs) is persisted under
+  `~/.9router` on the host and mounted into the container at `/app/data`.
+developer: decolua
+website: https://github.com/decolua/9router
+submitter: nine-router
+submission: https://github.com/decolua/9router
+repo: https://github.com/decolua/9router
+support: https://github.com/decolua/9router/issues
+gallery: []
+releaseNotes: >-
+  Initial release packaging the upstream `decolua/9router:latest` image
+  (multi-platform linux/amd64 + linux/arm64) as a Umbrel community app.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

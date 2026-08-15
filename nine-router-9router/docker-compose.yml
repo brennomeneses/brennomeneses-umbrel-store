@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+
+  app_proxy:
+    environment:
+      APP_HOST: nine-router-9router_9router_1
+      APP_PORT: 20128
+
+  9router:
+    image: decolua/9router:latest
+    restart: unless-stopped
+    init: true
+    environment:
+      DATA_DIR: /app/data
+      PORT: "20128"
+      HOSTNAME: 0.0.0.0
+    volumes:
+      - "${UMBREL_ROOT}/volumes/9router/data:/app/data"
