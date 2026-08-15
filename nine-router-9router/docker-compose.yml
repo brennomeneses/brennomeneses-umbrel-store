@@ -15,5 +15,6 @@ services:
       DATA_DIR: /app/data
       PORT: "20128"
       HOSTNAME: 0.0.0.0
+      INITIAL_PASSWORD: "123456"
     volumes:
       - "${UMBREL_ROOT}/volumes/9router/data:/app/data"
